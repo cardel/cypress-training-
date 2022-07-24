@@ -1,0 +1,25 @@
+{
+  "name": "cypress-training-",
+  "version": "1.0.0",
+  "description": "This is a workshop about Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cardel/cypress-training-.git"
+  },
+  "keywords": [
+    "ui-testing",
+    "dojo",
+    "practice",
+    "cypress"
+  ],
+  "author": "Carlos Andres Delgado cardel87@gmail.com https://github.com/cardel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cardel/cypress-training-/issues"
+  },
+  "homepage": "https://github.com/cardel/cypress-training-#readme"
+}
