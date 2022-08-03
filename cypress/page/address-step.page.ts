@@ -3,7 +3,7 @@ class AddressStepPage {
   private content: string;
 
   constructor() {
-      this.carNav = ".cart_navigation";
+      this.carNav = ".cart_navigation .button span";
       this.content = "Proceed to checkout";
   }
 

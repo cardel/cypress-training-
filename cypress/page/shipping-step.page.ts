@@ -5,7 +5,7 @@ class ShippingStepPage {
 
   constructor() {
       this.cartContent = "Proceed to checkout";
-      this.cartNav = ".cart_navigation";
+      this.cartNav = ".cart_navigation .button span";
       this.cvg = "#cgv";
   }
 
