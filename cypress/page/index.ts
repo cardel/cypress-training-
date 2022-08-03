@@ -5,3 +5,4 @@ export { ShippingStepPage } from "./shipping-step.page";
 export { ShoppingCartPage } from "./shopping-cart.page";
 export { LoginPage } from "./login.page";
 export { AddressStepPage } from "./address-step.page";
+export { DressesListPage  } from "./dresses-list.page";
