@@ -1,22 +1,21 @@
 class PaymentStepPage {
-  private bankWireTag: string;
-  private cartNav: string;
-  private confirmationMessageTag: string;
-  private confirmationMessageText: any;
+  private payButton: string;
+  private confirmationMessageButton: string;
+  private confirmOrderMessage: string;
 
   constructor() {
-      this.bankWireTag = ".bankwire";
-      this.cartNav = "#cart_navigation > .button";
-      this.confirmationMessageTag = "#center_column > div.box > p > strong";
+      this.payButton =  "a[title='Pay by bank wire'].bankwire";
+      this.confirmationMessageButton = "#cart_navigation .button span";
+      this.confirmOrderMessage = "#center_column > div > p > strong";
   }
 
   public payByBank() {
-      cy.get(this.bankWireTag).click();
-      cy.get(this.cartNav).click();
+      cy.get(this.payButton).click();
+      cy.get(this.confirmationMessageButton).click();
   }
 
   public getConfirmationMessage() {
-      return cy.get(this.confirmationMessageTag);
+      return cy.get(this.confirmOrderMessage);
   }
 }
 
