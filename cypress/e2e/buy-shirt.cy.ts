@@ -1,32 +1,39 @@
+import {MenuContentPage,
+  LoginPage,
+  ProductsListPage,
+  ShoppingCartPage,
+  AddressStepPage,
+  ShippingStepPage,
+  PaymentStepPage,
+} from "../page/index";
+
+const menuContentPage = new MenuContentPage();
+const productsListPage = new ProductsListPage();
+const shoppingCartPage = new ShoppingCartPage();
+const loginPage = new LoginPage();
+const addressStepPage = new AddressStepPage();
+const shippingStepPage = new ShippingStepPage();
+const paymentStepPage = new PaymentStepPage();
+
 describe("Buy a t-shirt", () => {
   it("then the t-shirt should be bought", () => {
-    cy.visit("http://automationpractice.com/");
-    cy.get("#block_top_menu > ul > li:nth-child(3) > a").click();
-    cy.get(
-        "#center_column a.button.ajax_add_to_cart_button.btn.btn-default",
-    ).click();
-    cy.get("[style*='display: block;'] .button-container > a").click();
-    cy.get(".cart_navigation span").click();
+    menuContentPage.visitMenuContentPage();
+    menuContentPage.goToTShirtMenu();
 
-    cy.get("#email").type("aperdomobo@gmail.com");
-    cy.get("#passwd").type("WorkshopProtractor");
+    menuContentPage.visitMenuContentPage();
+    menuContentPage.goToTShirtMenu();
 
-    // Login
-    cy.get("#SubmitLogin").click();
-    // Proceder con el checkout
-    cy.get("[name='processAddress']").click();
-    // Aceptar los terminos y condiciones
-    cy.get("#cgv").click();
-    // Proceed to purchase
-    cy.get("[name='processCarrier']").click();
-    // Pay by bank
-    cy.get(".bankwire").click();
-    // Confirm order
-    cy.get("#cart_navigation > [type='submit']").click();
-    // Verify purchase
-    cy.get("#center_column > div > p > strong").should(
-        "have.text",
-        "Your order on My Store is complete.",
-    );
+    productsListPage.addToCart();
+    productsListPage.checkout();
+
+    shoppingCartPage.checkoutCart();
+
+    loginPage.login("aperdomobo@gmail.com", "WorkshopProtractor");
+    addressStepPage.checkout();
+
+    shippingStepPage.checkout();
+
+    paymentStepPage.payByBank();
+    paymentStepPage.getConfirmationMessage().should("have.text", "Your order on My Store is complete.");
   });
 });
