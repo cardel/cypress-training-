@@ -15,6 +15,7 @@ describe("Buy a t-shirt", () => {
   let addressStepPage: AddressStepPage;
   let shippingStepPage: ShippingStepPage;
   let paymentStepPage: PaymentStepPage;
+  const product = "Faded Short Sleeve T-shirts";
 
   before(() => {
     menuContentPage = new MenuContentPage();
@@ -33,8 +34,8 @@ describe("Buy a t-shirt", () => {
     menuContentPage.visitMenuContentPage();
     menuContentPage.goToTShirtMenu();
 
-    productsListPage.addToCart();
-    productsListPage.checkout();
+    productsListPage.addTShirtToCart(product);
+    productsListPage.proceedToCheckout();
 
     shoppingCartPage.checkoutCart();
 
