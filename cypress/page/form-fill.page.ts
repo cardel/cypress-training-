@@ -5,40 +5,42 @@ class PersonalFormPage{
   private gender: string;
   private dateOfBirth: string;
   private mobileNumber: string;
-  private hobbies: string[];
+  private hobbies: string;
   private currentAddress: string;
   private state: string;
   private city: string;
+  private modal: string;
 
-  constructor(personalInformation: personalInfo) {
-    this.firstName = personalInformation.name;
-    this.lastName = personalInformation.lastName;
-    this.email = personalInformation.email;
-    this.gender = personalInformation.gender;
-    this.mobileNumber = personalInformation.mobileNumber;
-    this.gender = personalInformation.gender;
-    this.dateOfBirth = personalInformation.dateOfBirth;
-    this.hobbies = personalInformation.hobbies;
-    this.currentAddress = personalInformation.currentAddress;
-    this.state = personalInformation.state;
-    this.city = personalInformation.city;
+  constructor() {
+    this.firstName = "#firstName";
+    this.lastName = "#lastName";
+    this.email = "#userEmail";
+    this.gender = "#genterWrapper";
+    this.mobileNumber = "#userNumber";
+    this.gender = "#dateOfBirthInput";
+    this.dateOfBirth = "#dateOfBirthInput";
+    this.hobbies = "#hobbiesWrapper .custom-control-label";
+    this.currentAddress = "#currentAddress";
+    this.state =  "#react-select-3-input";
+    this.city = "#react-select-4-input";
+    this.modal= "#example-modal-sizes-title-lg";
   }  
 
-  public fillForm(): void {
+  public fillForm(personInfo: personalInfo): void {
     this.getPage();
-    cy.get(this.firstName).type(this.firstName);
-    cy.get(this.lastName).type(this.lastName);
-    cy.get(this.email).type(this.email);
-    cy.get(this.gender).find(`input[value = '${this.gender}']`).click({force: true});
-    cy.get(this.mobileNumber).type(this.mobileNumber);
-    cy.get(this.dateOfBirth).type(`{selectall}${this.dateOfBirth}{enter}`);
-    this.hobbies.forEach((hobbie: string) => {
-      cy.get("#hobbiesWrapper .custom-control-label").filter(`:contains("${hobbie}")`).click();
+    cy.get(this.firstName).type(personInfo.name);
+    cy.get(this.lastName).type(personInfo.lastName);
+    cy.get(this.email).type(personInfo.email);
+    cy.get(this.gender).find(`input[value = '${personInfo.gender}']`).click({force: true});
+    cy.get(this.mobileNumber).type(personInfo.mobileNumber);
+    cy.get(this.dateOfBirth).type(`{selectall}${personInfo.dateOfBirth}{enter}`);
+    personInfo.hobbies.forEach((hobbie: string) => {
+      cy.get(this.hobbies).filter(`:contains("${hobbie}")`).click();
     });
-    cy.get(this.currentAddress).type(this.currentAddress);   
+    cy.get(this.currentAddress).type(personInfo.currentAddress);   
     //Challenge
-    cy.get(this.state).type(`${this.state} {enter}`,{force: true});
-    cy.get(this.city).type(`${this.city} {enter}`, {force: true});
+    cy.get(this.state).type(`${personInfo.state} {enter}`,{force: true});
+    cy.get(this.city).type(`${personInfo.city} {enter}`, {force: true});
   }
 
   private getPage() : void {
@@ -46,7 +48,7 @@ class PersonalFormPage{
   }
 
   public verifySubmission(msg: string): void {
-    cy.get("#example-modal-sizes-title-lg").should("have.text", msg);
+    cy.get(this.modal).should("have.text", msg);
   }
 }
 

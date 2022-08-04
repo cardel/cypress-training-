@@ -16,8 +16,8 @@ describe("Register student information form", async () => {
   };
 
   it("Filling form", async () => {
-    const personalPage = new PersonalFormPage(personalInformation as personalInfo );
-    personalPage.fillForm();
+    const personalPage = new PersonalFormPage();
+    personalPage.fillForm(personalInformation as personalInfo);
     personalPage.verifySubmission("Thanks for submitting the form");
   });
 });
