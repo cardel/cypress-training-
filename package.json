@@ -11,8 +11,8 @@
     "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports",
     "test": "cypress run",
     "lint:fix": "npm run lint -- --fix",
-    "pre": "npm run clean:reports",
-    "post": "npm run combine:reports && npm run generate:reports"
+    "pretest": "npm run clean:reports",
+    "posttest": "npm run combine:reports && npm run generate:reports"
   },
   "repository": {
     "type": "git",
