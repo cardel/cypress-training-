@@ -9,3 +9,4 @@ export { DressesListPage  } from "./dresses-list.page";
 export { PersonalFormPage  } from "./form-fill.page";
 export { personalInfo } from "./form-fill.page";
 export { UploadPage } from "./upload.page";
+export { DownloadPage } from "./dowload.page";
