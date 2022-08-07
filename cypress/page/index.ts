@@ -10,3 +10,4 @@ export { PersonalFormPage  } from "./form-fill.page";
 export { personalInfo } from "./form-fill.page";
 export { UploadPage } from "./upload.page";
 export { DownloadPage } from "./dowload.page";
+export { IframePage } from "./iframe.page";

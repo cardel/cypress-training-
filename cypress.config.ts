@@ -11,6 +11,7 @@ export default defineConfig({
       // config.defaultCommandTimeout = 10000
       config.defaultCommandTimeout = 20000
       config.responseTimeout = 20000
+      config.chromeWebSecurity = false
       // IMPORTANT return the updated config object
       return config;
     },
