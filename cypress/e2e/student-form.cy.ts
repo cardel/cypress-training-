@@ -1,7 +1,8 @@
 import {PersonalFormPage} from "../page/index";
 import {personalInfo} from "../page/index";
 
-describe("Register student information form", async () => {
+describe("Register student information form", () => {
+  let personalPage: PersonalFormPage;
   const personalInformation = {
     name: "Holmes",
     lastName: "Salazar",
@@ -14,9 +15,12 @@ describe("Register student information form", async () => {
     state: "NCR",
     city: "Delhi",
   };
+  before( () => {
+    personalPage = new PersonalFormPage();
+  });
 
-  it("Filling form", async () => {
-    const personalPage = new PersonalFormPage();
+  it("Filling form", () => {
+    personalPage.visitPage();
     personalPage.fillForm(personalInformation as personalInfo);
     personalPage.verifySubmission("Thanks for submitting the form");
   });

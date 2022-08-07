@@ -10,6 +10,8 @@ class PersonalFormPage{
   private state: string;
   private city: string;
   private modal: string;
+  private submit : string;
+
 
   constructor() {
     this.firstName = "#firstName";
@@ -17,17 +19,16 @@ class PersonalFormPage{
     this.email = "#userEmail";
     this.gender = "#genterWrapper";
     this.mobileNumber = "#userNumber";
-    this.gender = "#dateOfBirthInput";
     this.dateOfBirth = "#dateOfBirthInput";
     this.hobbies = "#hobbiesWrapper .custom-control-label";
     this.currentAddress = "#currentAddress";
     this.state =  "#react-select-3-input";
     this.city = "#react-select-4-input";
     this.modal= "#example-modal-sizes-title-lg";
+    this.submit = "#submit";
   }  
 
   public fillForm(personInfo: personalInfo): void {
-    this.getPage();
     cy.get(this.firstName).type(personInfo.name);
     cy.get(this.lastName).type(personInfo.lastName);
     cy.get(this.email).type(personInfo.email);
@@ -41,9 +42,11 @@ class PersonalFormPage{
     //Challenge
     cy.get(this.state).type(`${personInfo.state} {enter}`,{force: true});
     cy.get(this.city).type(`${personInfo.city} {enter}`, {force: true});
+    //Click on submit
+    cy.get(this.submit).click({force: true});
   }
 
-  private getPage() : void {
+  public visitPage() : void {
     cy.visit("https://demoqa.com/automation-practice-form");
   }
 
